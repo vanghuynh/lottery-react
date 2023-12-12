@@ -20,7 +20,6 @@ class App extends React.Component {
     event.preventDefault();
 
     const accounts = await web3.eth.getAccounts();
-    console.log(accounts[0]);
 
     this.setState({ message: "Waiting on transaction success..." });
 
@@ -29,7 +28,6 @@ class App extends React.Component {
       value: web3.utils.toWei(this.state.value, "ether"),
       //maxFeePerGas: web3.utils.toWei("5", "gwei"),
     });
-    console.log("result", result);
     this.setState({ message: "You have been entered!" });
   };
 
@@ -37,16 +35,13 @@ class App extends React.Component {
     event.preventDefault();
     const accounts = await web3.eth.getAccounts();
     try {
-      console.log(accounts[0]);
       this.setState({ message: "Picking a winner!" });
       const result = await lottery.methods.pickWinner().send({
         from: accounts[0],
         //maxFeePerGas: web3.utils.toWei("5", "gwei"),
       });
       this.setState({ message: "A winner has been picked!" });
-      console.log("result", result);
     } catch (error) {
-      console.log(error);
       this.setState({ message: "An error has occurred!" });
     }
   };
