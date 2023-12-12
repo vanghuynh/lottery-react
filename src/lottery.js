@@ -1,58 +1,44 @@
 import web3 from "./web3";
-const address = "0xb1F81d59AF0423c12D9Bbd7ECDecA4af52Ccc455";
+
+const address = "0xF0cB8249C4063FA09B40BBae3DC8d326e06Aa8A3";
 const abi = [
+  { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
-    constant: true,
-    inputs: [],
-    name: "manager",
-    outputs: [{ name: "", type: "address" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: "pickWinner",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "getPlayers",
-    outputs: [{ name: "", type: "address[]" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
     inputs: [],
     name: "enter",
     outputs: [],
-    payable: true,
     stateMutability: "payable",
     type: "function",
   },
   {
-    constant: true,
-    inputs: [{ name: "", type: "uint256" }],
-    name: "players",
-    outputs: [{ name: "", type: "address" }],
-    payable: false,
+    inputs: [],
+    name: "getPlayers",
+    outputs: [
+      { internalType: "address payable[]", name: "", type: "address[]" },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
-    payable: false,
+    name: "manager",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "pickWinner",
+    outputs: [],
     stateMutability: "nonpayable",
-    type: "constructor",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    name: "players",
+    outputs: [{ internalType: "address payable", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
   },
 ];
-
-// local instance of the contract
 export default new web3.eth.Contract(abi, address);
